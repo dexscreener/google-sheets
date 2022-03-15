@@ -12,7 +12,7 @@ export const pairProp = (chainId: string, pairAddress: string, prop: string): st
   return result(pair, prop);
 };
 
-export const pair = (
+export const fullPair = (
   chainId: string,
   pairAddress: string,
   props = 'all',
