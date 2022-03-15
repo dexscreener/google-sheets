@@ -1,0 +1,66 @@
+{
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base"
+  ],
+
+  "plugins": [
+    "import"
+  ],
+
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+
+  "ignorePatterns": [
+    "node_modules",
+    "/dist",
+    "build.js"
+  ],
+
+  "rules": {
+    // off
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "prefer-template": "off",
+    "no-await-in-loop": "off",
+    "no-continue": "off",
+    "object-curly-newline": "off",
+    "no-restricted-syntax": "off",
+    "newline-per-chained-call": "off",
+    "lines-between-class-members": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "prefer-destructuring": "off",
+    "no-underscore-dangle": "off",
+    "eslint-disable class-methods-use-this": "off",
+    "max-classes-per-file": "off",
+    "class-methods-use-this": "off",
+
+    // warn
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": "warn",
+    "@typescript-eslint/member-delimiter-style": "warn",
+    "@typescript-eslint/explicit-function-return-type": ["warn", { "allowExpressions": true }],
+    "no-unreachable": "warn",
+    "max-len": ["warn", { "code": 150, "ignoreUrls": true }],
+    "sort-imports": ["warn", {"ignoreDeclarationSort": true }],
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+
+
+    // error
+    "import/no-extraneous-dependencies": "error",
+    "import/no-unresolved": "error"
+  }
+}

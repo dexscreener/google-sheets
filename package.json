@@ -1,0 +1,23 @@
+{
+  "name": "@dex-screener/google-sheets",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint:eslint": "eslint --fix .",
+    "lint:ts": "tsc --noEmit",
+    "lint": "npm run lint:eslint && npm run lint:ts",
+    "build": "node build.js",
+    "push": "npm run build && clasp push"
+  },
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.45",
+    "@types/lodash": "^4.14.180",
+    "esbuild": "^0.14.27",
+    "esbuild-gas-plugin": "^0.3.2",
+    "eslint-config-airbnb-typescript": "^16.1.2",
+    "eslint-plugin-import": "^2.25.4",
+    "lodash": "^4.17.21",
+    "typescript": "3.8.2",
+    "zod": "^3.13.4"
+  }
+}

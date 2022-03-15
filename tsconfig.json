@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "esnext"
+    ],
+    "types": [
+      "@types/google-apps-script"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    // "noResolve": true,
+    "target": "ES2018",
+    "module": "None",
+    "moduleResolution": "node",
+    "outDir": "dist",
+  },
+  "include": [
+    "src/**/*"
+  ],
+}
