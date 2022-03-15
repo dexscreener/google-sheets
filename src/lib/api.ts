@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
+import { Pair, pairSchema } from '../types';
+
 import { fetchFromCache, storeResponseOnCache, markAsFetching as willFetch } from './cache';
-import { Pair, pairSchema } from './types';
 
 const lock = LockService.getDocumentLock();
 const lockTimeoutInMs = 5000; // 5 seconds
