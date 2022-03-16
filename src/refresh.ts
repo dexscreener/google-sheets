@@ -1,19 +1,15 @@
 // https://stackoverflow.com/questions/23177356/how-to-force-new-google-spreadsheets-to-refresh-and-recalculate
 
 const formulaMatcher = 'DEX_SCREENER_REFRESH_INTERVAL';
-const commentMatcher = /\+\s?N\(.*\)/gi; // https://regexr.com/6hhci
 
 const refreshCell = (cell: GoogleAppsScript.Spreadsheet.Range): void => {
   const originalFormula = cell.getFormula();
 
   if (!originalFormula || !originalFormula.includes(formulaMatcher)) return;
 
-  let newFormula = originalFormula.replace(commentMatcher, '').trim();
-  newFormula += ` + N("refreshed_at: ${Date.now()}")`;
-
-  cell.setFormula(newFormula);
+  cell.setFormula('');
   SpreadsheetApp.flush();
-  // cell.setFormula(originalFormula);
+  cell.setFormula(originalFormula);
 };
 
 const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {
