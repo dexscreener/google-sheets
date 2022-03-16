@@ -1,6 +1,6 @@
 // https://stackoverflow.com/questions/23177356/how-to-force-new-google-spreadsheets-to-refresh-and-recalculate
 
-const formulaMatcher = 'DEX_SCREENER';
+const formulaMatcher = 'DEX_SCREENER_REFRESH_INTERVAL';
 
 const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {
   Logger.log({ sheet, lastRow: sheet.getLastRow() });
@@ -16,7 +16,7 @@ const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {
       if (!originalFormula || !originalFormula.includes(formulaMatcher)) continue;
 
       const cell = range.getCell(row, column);
-      cell.setValue('#BUSY');
+      cell.setFormula('# Refreshing');
       SpreadsheetApp.flush();
       cell.setFormula(originalFormula);
     }
@@ -31,4 +31,10 @@ export const refreshData = (): void => {
     refreshSheet(sheet);
     spreadsheet.toast('DEX Screener data refresed!');
   });
+};
+
+export const refreshInterval = (minutes: number): Date => {
+  const refreshAt = new Date();
+  refreshAt.setMinutes(refreshAt.getMinutes() + minutes);
+  return refreshAt;
 };

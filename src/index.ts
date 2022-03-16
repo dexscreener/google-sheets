@@ -1,6 +1,6 @@
 import { Direction, FormattedResult } from './lib/result';
 import { fullPair, pairProp } from './pairs';
-import { refreshData } from './refresh';
+import { refreshData, refreshInterval } from './refresh';
 
 const onOpen = (): void => {
   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
@@ -13,8 +13,9 @@ const onOpen = (): void => {
 // GAS do not support export
 // https://github.com/mahaker/esbuild-tutorial/blob/main/src/index.ts
 declare let global: any;
-global.DEX_SCREENER_REFRESH = refreshData;
 global.onOpen = onOpen;
+
+global.DEX_SCREENER_REFRESH = refreshData;
 
 // You need to declare the JSDoc block here, not in the actual function
 // to get the auto-completion. It is the nature of the beast.
@@ -28,7 +29,12 @@ global.onOpen = onOpen;
  * @param {String} prop (for example priceUsd)
  * @customfunction
  */
-global.DEX_SCREENER_PAIR_PROP = (chainId: string, pairAddress: string, prop: string): string | number | null => pairProp(chainId, pairAddress, prop);
+global.DEX_SCREENER_PAIR_PROP = (
+  chainId: string,
+  pairAddress: string,
+  prop: string,
+  _timestamp: Date,
+): string | number | null => pairProp(chainId, pairAddress, prop);
 
 /**
  * @preserve
@@ -47,3 +53,14 @@ global.DEX_SCREENER_PAIR = (
   direction: Direction = 'horizontal',
   includePropName = true,
 ): FormattedResult => fullPair(chainId, pairAddress, props, direction, includePropName);
+
+/**
+ * @preserve
+ * Time function for blablabla
+ *
+ * @param {Number} minutes
+ */
+global.DEX_SCREENER_REFRESH_INTERVAL = (minutes: number): Date => {
+  Logger.log({ fn: 'DEX_SCREENER_REFRESH_INTERVAL', minutes });
+  return refreshInterval(minutes);
+};
