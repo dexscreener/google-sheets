@@ -15,9 +15,7 @@ try {
     outfile: 'dist/bundle.js',
     outExtension: { '.js': '.mjs' },
     plugins: [GasPlugin],
-    minify: false,
-    ignoreAnnotations: false,
-    treeShaking: false,
+    legalComments: 'inline',
   })
 } catch {
   process.exitCode = 1

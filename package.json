@@ -7,7 +7,8 @@
     "lint:ts": "tsc --noEmit",
     "lint": "npm run lint:eslint && npm run lint:ts",
     "build": "node build.js",
-    "push": "npm run build && clasp push"
+    "push": "npm run build && clasp push",
+    "open": "clasp open"
   },
   "dependencies": {
     "@types/google-apps-script": "^1.0.45",
