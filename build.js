@@ -1,12 +1,3 @@
-// const { GasPlugin } = require('esbuild-gas-plugin');
-
-// require('esbuild').build({
-//   entryPoints: ['src/index.ts'],
-//   bundle: true,
-//   outfile: 'dist/bundle.js',
-//   plugins: [GasPlugin]
-// }).catch(() => process.exit(1))
-
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { build } from 'esbuild'
@@ -23,7 +14,10 @@ try {
     entryPoints: [path.join(__dirname, 'src', 'index.ts')],
     outfile: 'dist/bundle.js',
     outExtension: { '.js': '.mjs' },
-    plugins: [GasPlugin]
+    plugins: [GasPlugin],
+    minify: false,
+    ignoreAnnotations: false,
+    treeShaking: false,
   })
 } catch {
   process.exitCode = 1

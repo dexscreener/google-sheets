@@ -4,7 +4,7 @@ const fetchFromCacheMaxAttempts = 3;
 const minSleepTimeInMs = 500; // 0.5 seconds
 const sleepTimeInMs = Math.floor(minSleepTimeInMs + Math.random() * minSleepTimeInMs);
 
-const cacheExpirationInSeconds = 60;
+const cacheExpirationInSeconds = 30;
 
 const cacheControlKey = (endpoint: string): string => `control:${endpoint}`;
 const cacheContentKey = (endpoint: string): string => `content:${endpoint}`;

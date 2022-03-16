@@ -16,7 +16,7 @@ const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {
       if (!originalFormula || !originalFormula.includes(formulaMatcher)) continue;
 
       const cell = range.getCell(row, column);
-      cell.setFormula('');
+      cell.setValue('#BUSY');
       SpreadsheetApp.flush();
       cell.setFormula(originalFormula);
     }
