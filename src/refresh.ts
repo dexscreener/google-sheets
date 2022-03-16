@@ -3,8 +3,6 @@
 const formulaMatcher = 'DEX_SCREENER_REFRESH_INTERVAL';
 
 const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {
-  Logger.log({ sheet, lastRow: sheet.getLastRow() });
-
   const range = sheet.getDataRange();
   const rows = range.getNumRows();
   const columns = range.getNumColumns();
