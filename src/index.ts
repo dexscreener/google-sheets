@@ -33,7 +33,8 @@ global.DEX_SCREENER_PAIR_PROP = (
   chainId: string,
   pairAddress: string,
   prop: string,
-  _timestamp: Date,
+  // eslint-disable-next-line no-unused-vars
+  _timestamp: Date = new Date(),
 ): string | number | null => pairProp(chainId, pairAddress, prop);
 
 /**
@@ -52,15 +53,17 @@ global.DEX_SCREENER_PAIR = (
   props = 'all',
   direction: Direction = 'horizontal',
   includePropName = true,
+  // eslint-disable-next-line no-unused-vars
+  _timestamp: Date = new Date(),
 ): FormattedResult => fullPair(chainId, pairAddress, props, direction, includePropName);
 
 /**
  * @preserve
  * Time function for blablabla
  *
- * @param {Number} minutes
+ * @param {Number} [seconds=30]
  */
-global.DEX_SCREENER_REFRESH_INTERVAL = (minutes: number): Date => {
-  Logger.log({ fn: 'DEX_SCREENER_REFRESH_INTERVAL', minutes });
-  return refreshInterval(minutes);
+global.DEX_SCREENER_REFRESH_INTERVAL = (seconds: number = 30): Date => {
+  Logger.log({ fn: 'DEX_SCREENER_REFRESH_INTERVAL', seconds });
+  return refreshInterval(seconds);
 };

@@ -5,7 +5,7 @@ import { Pair, pairSchema } from '../types';
 import { fetchFromCache, storeResponseOnCache, markAsFetching as willFetch } from './cache';
 
 const lock = LockService.getDocumentLock();
-const lockTimeoutInMs = 5000; // 5 seconds
+const lockTimeoutInMs = 1; // 1 second
 
 const baseAPIUrl = 'https://api.dexscreener.io/latest';
 
@@ -76,7 +76,10 @@ export const fetchPair = (chainId: string, pairAddress: string): Pair | null => 
 
   const pairsResponseSchema = z.object({ pair: pairSchema });
   const parsedJson = pairsResponseSchema.safeParse(response);
-  if (!parsedJson.success) return null;
+  if (!parsedJson.success) {
+    Logger.log({ fn: 'fetchPair', chainId, pairAddress, error: parsedJson.error });
+    return null;
+  }
 
   return parsedJson.data.pair;
 };

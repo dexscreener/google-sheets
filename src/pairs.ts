@@ -7,7 +7,7 @@ export const pairProp = (chainId: string, pairAddress: string, prop: string): st
   Logger.log({ fn: 'pairProp', chainId, pairAddress, prop });
 
   const pair = fetchPair(chainId, pairAddress);
-  if (!pair) throw new Error(`Pair ${chainId} Not Found on chain ${chainId}`);
+  if (!pair) throw new Error(`Pair ${pairAddress} Not Found on chain ${chainId}`);
 
   return result(pair, prop);
 };
@@ -19,10 +19,10 @@ export const fullPair = (
   direction: Direction = 'horizontal',
   includePropName = true,
 ): FormattedResult => {
-  Logger.log({ method: 'pair', chainId, pairAddress, props, direction, includePropName });
+  Logger.log({ fn: 'fullPair', chainId, pairAddress, props, direction, includePropName });
 
   const pair = fetchPair(chainId, pairAddress);
-  if (!pair) throw new Error(`Pair ${chainId} Not Found on chain ${chainId}`);
+  if (!pair) throw new Error(`Pair ${pairAddress} Not Found on chain ${chainId}`);
 
   return formatResult(pair, props, direction, includePropName);
 };

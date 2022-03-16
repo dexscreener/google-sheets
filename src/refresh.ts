@@ -16,8 +16,8 @@ const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {
       if (!originalFormula || !originalFormula.includes(formulaMatcher)) continue;
 
       const cell = range.getCell(row, column);
-      cell.setFormula('# Refreshing');
-      SpreadsheetApp.flush();
+      cell.setFormula('');
+      // SpreadsheetApp.flush();
       cell.setFormula(originalFormula);
     }
   }
@@ -33,8 +33,8 @@ export const refreshData = (): void => {
   });
 };
 
-export const refreshInterval = (minutes: number): Date => {
+export const refreshInterval = (seconds: number): Date => {
   const refreshAt = new Date();
-  refreshAt.setMinutes(refreshAt.getMinutes() + minutes);
+  refreshAt.setSeconds(refreshAt.getSeconds() + seconds);
   return refreshAt;
 };
