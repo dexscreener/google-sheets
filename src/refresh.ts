@@ -7,7 +7,7 @@ const refreshCell = (cell: GoogleAppsScript.Spreadsheet.Range): void => {
 
   if (!originalFormula || !originalFormula.includes(formulaMatcher)) return;
 
-  cell.setFormula('');
+  cell.setValue(cell.getValue());
   SpreadsheetApp.flush();
   cell.setFormula(originalFormula);
 };
