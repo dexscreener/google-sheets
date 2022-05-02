@@ -10,6 +10,7 @@ const refreshCell = (cell: GoogleAppsScript.Spreadsheet.Range): void => {
   cell.setValue(cell.getValue());
   SpreadsheetApp.flush();
   cell.setFormula(originalFormula);
+  SpreadsheetApp.flush();
 };
 
 const refreshSheet = (sheet: GoogleAppsScript.Spreadsheet.Sheet): void => {

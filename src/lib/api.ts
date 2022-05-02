@@ -7,7 +7,7 @@ import { fetchFromCache, storeResponseOnCache, markAsFetching as willFetch } fro
 const lock = LockService.getDocumentLock();
 const lockTimeoutInMs = 1; // 1 second
 
-const baseAPIUrl = 'https://api.dexscreener.io/latest';
+const baseAPIUrl = 'https://api.dexscreener.com/latest';
 
 export const allPairProps = [
   'chainId',
